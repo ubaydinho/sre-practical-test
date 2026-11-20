@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports: ["3000:3000"]
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-ganti-di-env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin123}
+    volumes:
+      - app-data:/data
+      - app-logs:/logs
+    restart: unless-stopped
+volumes:
+  app-data:
+  app-logs:
